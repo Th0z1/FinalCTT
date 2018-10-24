@@ -52,16 +52,22 @@ export class ScorePage {
 
       console.log(this.score)
 
-      this.uploadComments = new marksAndComments();
-      if(this.scoreperc < 50){
+      if( this.score === 0){
         this.mood = 1;
+      }else{
+        if(this.scoreperc < 50){
+          this.mood = 1;
+        }
+        else if(this.scoreperc < 75){
+          this.mood = 2;
+        }
+        else if(this.scoreperc >= 75){
+          this.mood = 3
+        }
       }
-      else if(this.scoreperc < 75){
-        this.mood = 2;
-      }
-      else if(this.scoreperc >= 75){
-        this.mood = 3
-      }
+
+      this.uploadComments = new marksAndComments();
+      
 
      this.displayRatingButton = true;
   }

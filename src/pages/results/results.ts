@@ -18,17 +18,30 @@ export class ResultsPage {
 
   objectResults : myResults;
   arrayResults = [];
-  taskAvailable = 0
+  taskAvailable = 0;
+  question= '';
+  answer='';
+ 
  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+  
 
   this.objectResults = new myResults();
   this.arrayResults = this.objectResults.returnAnswers();
-  console.log( this.arrayResults )
+  console.log( this.arrayResults );
+  console.log(this.question);
+  console.log(this.answer);
+  
+  
   
  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ResultsPage');
   }
-
+  memo(task){
+    console.log(task);
+    
+    this.navCtrl.push("MemoPage",{task: task});
+  }
 }

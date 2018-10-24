@@ -1,7 +1,7 @@
 <ion-header>
 
     <ion-navbar color="primary" hideBackButton="true" text-center>
-      <ion-title >CodeTribe Tasks <ion-icon id="iconn" (click)="power()" ios="ios-power" md="md-power"></ion-icon></ion-title>
+      <ion-title >CodeTribe Tasks <ion-icon ios="ios-log-out" md="md-log-out" id="iconn" (click)="power()"></ion-icon></ion-title>
       
     </ion-navbar>
   
@@ -43,8 +43,9 @@
   
 
 <div class="results-button">
-    <ion-fab>
-        <button id="results" (click)="resultsPage()" ion-fab>Results</button>
-    </ion-fab>
+        <ion-fab>
+                <button ion-fab id="results" (click)="resultsPage()"> <ion-icon name="book"  ></ion-icon></button>
+              </ion-fab>
+   
 </div>
 </ion-content>

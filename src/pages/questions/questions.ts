@@ -36,7 +36,8 @@ export class QuestionsPage {
 
   questions = [{
     question:'',
-    questionType:''
+    questionType:'',
+    answer:''
   }]
 
   arrayAnswers = []
@@ -44,6 +45,7 @@ export class QuestionsPage {
   time =0;
   public anArray:any=[];
 
+  counter = 0;
   checkPoint = 0;
   countingQuestions = 0;
   postKey =''
@@ -71,7 +73,7 @@ export class QuestionsPage {
           console.log("Array not empty")
       snapshot.forEach(e => {
               this.countingQuestions += 1;
-              this.questions.push({question: e.val().question , questionType:e.val().questionType })
+              this.questions.push({question: e.val().question , questionType:e.val().questionType , answer: e.val().answer })
 
               this.arrayAnswers.push(e.val().answer)
       });
@@ -93,11 +95,11 @@ export class QuestionsPage {
   goTo(){
     console.log('this.anArray',this.anArray);
 
-      var counter
+      
 
-      for(counter = 0; counter < this.anArray.length; counter++){
+      for(this.counter = 0; this.counter < this.anArray.length; this.counter++){
 
-        if(this.anArray[counter].toLowerCase() === this.arrayAnswers[counter].toLowerCase() )
+        if(this.anArray[this.counter].toLowerCase() === this.arrayAnswers[this.counter].toLowerCase() )
             this.score +=1;
       }
 
@@ -132,6 +134,11 @@ export class QuestionsPage {
       if( (this.timerS === 0 ) && (this.timerM  === 0) && ( this.timerH === 0) ){
         this.timerVar.unsubscribe();
         
+        for(this.counter = 0; this.counter < this.anArray.length; this.counter++){
+
+          if(this.anArray[this.counter].toLowerCase() === this.arrayAnswers[this.counter].toLowerCase() )
+              this.score +=1;
+        }
         this.postKey = this.uploadMarks.uploadMarks(this.score, this.taskName);
         this.navCtrl.push("ScorePage",{score: this.score, postKey: this.postKey})
         

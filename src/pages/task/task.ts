@@ -34,9 +34,30 @@ export class TaskPage {
         this.taskState = true;
     }
   }
-  questionsPage(type, timer, timerType){
+  questionsPage(testName, timer, timerType){
+    let alert = this.alertCtrl.create({
+      title: testName,
+      message: 'Do you want to start writing the task?',
+      buttons: [
+        {
+          text: 'Yes',
+          role: 'Yes',
+          handler: () => {
+            console.log('Yes clicked');
+            this.navCtrl.push("QuestionsPage",{task : testName, time: timer, timerType : timerType });
+          }
+        },
+        {
+          text: 'No',
+          handler: () => {
+            console.log('No clicked');
+          }
+        }
+      ]
+    });
+    alert.present();
     this.nativePageTransitions.fade(null)
-    this.navCtrl.push("QuestionsPage",{task : type, time: timer, timerType : timerType });
+   
   }
   power(){
     const alert = this.alertCtrl.create({
@@ -64,6 +85,6 @@ export class TaskPage {
   }
 
   resultsPage(){
-    this.navCtrl.push("ResultsPage")
+      this.navCtrl.push("ResultsPage")
   }
 }

@@ -17,8 +17,8 @@
       </ion-row>
       <ion-row *ngFor="let result of arrayResults">
         <ion-col>{{result.taskName}} </ion-col>
-        <ion-col>{{result.marks}}%</ion-col>
-   
+        <ion-col>{{(result.marks).toFixed(0)}}%</ion-col>
+   <button ion-button full color="primary" (click)="memo(result.taskName)">Memorandum</button>
       </ion-row>
     </div>
     
