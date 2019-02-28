@@ -11,14 +11,9 @@
   
    
     <div class="results-available">
-      <ion-row id="header-row">
-          <ion-col>Task Name</ion-col>
-          <ion-col>Marks</ion-col>
-      </ion-row>
-      <ion-row *ngFor="let result of arrayResults">
+      <ion-row *ngFor="let result of arrayResults" (click)="memo(result.taskName)">
         <ion-col>{{result.taskName}} </ion-col>
         <ion-col>{{(result.marks).toFixed(0)}}%</ion-col>
-   <button ion-button full color="primary" (click)="memo(result.taskName)">Memorandum</button>
       </ion-row>
     </div>
     
