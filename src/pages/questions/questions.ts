@@ -99,8 +99,11 @@ export class QuestionsPage {
 
       for(this.counter = 0; this.counter < this.anArray.length; this.counter++){
 
-        if(this.anArray[this.counter].toLowerCase() === this.arrayAnswers[this.counter].toLowerCase() )
+        if( this.anArray[this.counter] !== null || this.anArray[this.counter] !== '' ){
+          if(this.anArray[this.counter].toLowerCase() === this.arrayAnswers[this.counter].toLowerCase() )
             this.score +=1;
+        }
+        
       }
 
 
@@ -136,8 +139,11 @@ export class QuestionsPage {
         
         for(this.counter = 0; this.counter < this.anArray.length; this.counter++){
 
-          if(this.anArray[this.counter].toLowerCase() === this.arrayAnswers[this.counter].toLowerCase() )
-              this.score +=1;
+          if( this.anArray[this.counter] !== null || this.anArray[this.counter] !== '' ){
+            if(this.anArray[this.counter].toLowerCase() === this.arrayAnswers[this.counter].toLowerCase() )
+            this.score +=1;
+          }
+          
         }
         this.postKey = this.uploadMarks.uploadMarks(this.score, this.taskName);
         this.navCtrl.push("ScorePage",{score: this.score, postKey: this.postKey})
